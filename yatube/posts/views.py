@@ -104,6 +104,7 @@ def post_detail(request, post_id):
     }
     return render(request, template, context)
 
+
 @login_required
 def post_create(request):
     """
@@ -127,6 +128,7 @@ def post_create(request):
     form = PostForm()
     context['form'] = form
     return render(request, template, context)
+
 
 @login_required
 def post_edit(request, post_id):
