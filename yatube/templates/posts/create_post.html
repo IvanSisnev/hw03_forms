@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title> {{ title }} </title>
+{% endblock %}
+{% block content %}
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 p-5">
+        <div class="card">
+          <div class="card-header">
+            {{ title }}: {{ user.username }}
+          </div>
+          <div class="card-body">
+            <form method="post"
+                  {% if is_edit %} action="{% url 'posts:post_edit' post.id %}"
+                  {% else %} action="{% url 'posts:post_create' %}" {% endif %}
+            >
+              <input type="hidden" name="csrfmiddlewaretoken" value="">
+              {% csrf_token %}
+              <div class="form-group row my-3 p-3">
+                <label for="id_text">
+                  Текст записи
+                  <span class="required text-danger" >*</span>
+                </label>
+                <textarea name="text" cols="40" rows="10" class="form-control"
+                          required id="id_text">
+                  {% if is_edit %}{{ post }}{% endif %}
+                </textarea>
+                <small id="id_text-help" class="form-text text-muted">
+                  Текст {% if is_edit %}новой {% endif %}записи
+                </small>
+              </div>
+              <div class="form-group row my-3 p-3">
+                <label for="id_group">Группа</label>
+                <select name="group" class="form-control" id="id_group">
+                  <option value="">
+                    {% for group in form.group %}
+                      {{ group }}
+                    {% endfor %}
+                  </option>
+                </select>
+                <small id="id_group-help" class="form-text text-muted">
+                  Группа, к которой будет относиться запись
+                </small>
+              </div>
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">
+                  {% if is_edit %}Сохранить
+                  {% else %}Добавить
+                  {% endif %}запись
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
