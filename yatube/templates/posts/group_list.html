@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-  <title>Записи сообщества "{{ group.title }}"</title>
+  <title>Записи сообщества {{ group.title }}</title>
 {% endblock %}
 {% block content %}
+<h1> {{ group.title }} </h1>
+<p> {{group.description }} </p>
   <div class="container py-5">
     {% include 'includes/paginator.html' %}
     <h3>Записи сообщества "{{ group.title }}"</h3>

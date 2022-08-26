@@ -63,6 +63,8 @@ def profile(request, username):
 
     user = User.objects.get(username=username)
 
+    # author = user.get_full_name()
+
     posts = user.posts.all()
 
     paginator = Paginator(posts, 10)
@@ -72,7 +74,7 @@ def profile(request, username):
     page_obj = paginator.get_page(page_number)
 
     context: dict = {
-        'author': user.get_full_name(),
+        'author': user,
         'posts': posts,
         'date_format': Post.date_format,
         'page_obj': page_obj,
