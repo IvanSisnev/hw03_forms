@@ -35,10 +35,11 @@ urlpatterns = [
         name='password_change'
     ),
     # Страница сообщения об удачной смене пароля.
-    path('password_change/done/', PasswordChangeDoneView.as_view(
-        template_name='users/password_change_done.html'),
-         name='password_change_done'
-         ),
+    path(
+        'password_change/done/', PasswordChangeDoneView.as_view(
+            template_name='users/password_change_done.html'),
+        name='password_change_done'
+    ),
     # Страница сброса пароля.
     path('password_reset/', PasswordResetView.as_view(),
          name='password_reset'),

@@ -32,6 +32,7 @@ class Post(models.Model):
     def __str__(self):
         return self.text
 
+
 class Group(models.Model):
     """
     Класс модели Group для создания и редактирования сообществ.
