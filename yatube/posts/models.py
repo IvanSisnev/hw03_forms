@@ -15,7 +15,6 @@ class Post(models.Model):
     Класс модели Post для создания и редактирования записей.
     """
 
-    date_format = "j E Y"
     text = models.TextField(verbose_name='Текст поста',
                             help_text='Поле для текста поста')
     pub_date = models.DateTimeField(auto_now_add=True,

@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
   <div class="container py-5">
-		{% include 'posts/paginator.html' %}
+    {% include 'includes/paginator.html' %}
     <h3>Последние обновления на сайте</h3>
     <br>
     <article>
@@ -15,7 +15,7 @@
             {{ post.author.get_full_name }}</a>
           </li>
           <li>
-            Дата публикации: {{ post.pub_date|date:date_format}}
+            Дата публикации: {{ post.pub_date|date:"j E Y"}}
           </li>
           {% if post.group %}
           <li>
@@ -35,6 +35,6 @@
         {% endif %}
       {% endfor %}
     </article>
-		{% include 'posts/paginator.html' %}
+    {% include 'includes/paginator.html' %}
   </div>
 {% endblock %}

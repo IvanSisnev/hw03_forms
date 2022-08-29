@@ -3,31 +3,31 @@
   <title>Записи сообщества {{ group.title }}</title>
 {% endblock %}
 {% block content %}
-<h1> {{ group.title }} </h1>
-<p> {{group.description }} </p>
-  <div class="container py-5">
-		{% include 'posts/paginator.html' %}
-    <h3>Записи сообщества "{{ group.title }}"</h3>
-    <br>
-    <article>
-      {% for post in page_obj %}
-        <ul>
-          <li>
-            Автор: <a href="{% url 'posts:profile' post.author.username %}">
-            {{ post.author.get_full_name }}</a>
-          </li>
-          <li>
-            Дата публикации: {{ post.pub_date|date:date_format}}
-          </li>
-        </ul>
-          <p>
-            {{ post.text }}
-          </p>
-        {% if not forloop.last %}
-          <hr>
-        {% endif %}
-      {% endfor %}
-    </article>
-		{% include 'posts/paginator.html' %}
-  </div>
+  <h1> {{ group.title }} </h1>
+  <p> {{group.description }} </p>
+    <div class="container py-5">
+      {% include 'includes/paginator.html' %}
+      <h3>Записи сообщества "{{ group.title }}"</h3>
+      <br>
+      <article>
+        {% for post in page_obj %}
+          <ul>
+            <li>
+              Автор: <a href="{% url 'posts:profile' post.author.username %}">
+              {{ post.author.get_full_name }}</a>
+            </li>
+            <li>
+              Дата публикации: {{ post.pub_date|date:"j E Y"}}
+            </li>
+          </ul>
+            <p>
+              {{ post.text }}
+            </p>
+          {% if not forloop.last %}
+            <hr>
+          {% endif %}
+        {% endfor %}
+      </article>
+      {% include 'includes/paginator.html' %}
+    </div>
 {% endblock %}
