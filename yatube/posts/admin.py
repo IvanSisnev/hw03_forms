@@ -38,8 +38,3 @@ class GroupAdmin(admin.ModelAdmin):
         'slug',
         'description',
     )
-
-
-# admin.site.register(Post, PostAdmin)
-
-# admin.site.register(Group, GroupAdmin)

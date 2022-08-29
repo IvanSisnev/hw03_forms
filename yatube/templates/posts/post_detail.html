@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-<title>Пост {{ title }}</title>
+<title>Пост {{ post|truncatechars:30 }}</title>
 {% endblock %}
 {% block content %}
 	<div class="container py-5">
@@ -18,7 +18,7 @@
 						Группа: <span> {{ post.group }} </span>
 					</li>
 					<li class="list-group-item">
-							<a href="{% url 'posts:group_list' post.group.slug %}">
+						<a href="{% url 'posts:group_list' post.group.slug %}">
 							все записи группы
 						</a>
 					</li>
@@ -46,7 +46,7 @@
 					<br>
 					{{ post }}
 				</p>
-				{% if request.user.username == post.author.username %}
+				{% if request.user == post.author %}
 					<a class="btn btn-primary"
 						 href="{% url 'posts:post_edit' post.id %}">
 						Редактировать запись

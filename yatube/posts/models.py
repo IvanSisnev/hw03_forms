@@ -16,12 +16,18 @@ class Post(models.Model):
     """
 
     date_format = "j E Y"
-    text = models.TextField()
-    pub_date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(verbose_name='Текст поста',
+                            help_text='Поле для текста поста')
+    pub_date = models.DateTimeField(auto_now_add=True,
+                                    verbose_name='Дата публикации')
     author = models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name='posts')
+                               related_name='posts',
+                               verbose_name='Автор поста',
+                               help_text='Выберите автора')
     group = models.ForeignKey('Group', on_delete=models.SET_NULL,
-                              related_name='posts', blank=True, null=True)
+                              related_name='posts', blank=True, null=True,
+                              verbose_name='Сообщество',
+                              help_text='Необязательно: выберите сообщество')
 
     class Meta:
         """

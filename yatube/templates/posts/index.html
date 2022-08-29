@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
   <div class="container py-5">
-    	{% include 'includes/paginator.html' %}
+		{% include 'posts/paginator.html' %}
     <h3>Последние обновления на сайте</h3>
     <br>
     <article>
@@ -35,6 +35,6 @@
         {% endif %}
       {% endfor %}
     </article>
-    {% include 'includes/paginator.html' %}
+		{% include 'posts/paginator.html' %}
   </div>
 {% endblock %}
