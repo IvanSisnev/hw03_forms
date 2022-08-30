@@ -4,9 +4,9 @@
 {% endblock %}
 {% block content %}
   <h1> {{ group.title }} </h1>
-  <p> {{group.description }} </p>
+  <p> {{ group.description }} </p>
     <div class="container py-5">
-      {% include 'includes/paginator.html' %}
+      {% include 'posts/includes/paginator.html' %}
       <h3>Записи сообщества "{{ group.title }}"</h3>
       <br>
       <article>
@@ -28,6 +28,6 @@
           {% endif %}
         {% endfor %}
       </article>
-      {% include 'includes/paginator.html' %}
+      {% include 'posts/includes/paginator.html' %}
     </div>
 {% endblock %}

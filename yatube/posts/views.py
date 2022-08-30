@@ -88,7 +88,6 @@ def post_create(request):
     Обработать запрос создания новой записи.
     """
     template = 'posts/create_post.html'
-    context = {}
 
     form = PostForm(request.POST or None)
     if form.is_valid():
@@ -97,7 +96,8 @@ def post_create(request):
         new_post.save()
         return redirect('posts:profile', username=request.user.username)
 
-    context['form'] = form
+    context = {'form': form}
+
     return render(request, template, context)
 
 
